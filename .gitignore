@@ -1,0 +1,11 @@
+/.idea/
+/__pycache__/
+/venv/
+/build/
+/dist/
+/pvlv_img_builder.egg-info/
+
+
+*.pyc
+*.swp
+*.cfg

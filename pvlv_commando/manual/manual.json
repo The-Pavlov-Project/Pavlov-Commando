@@ -1,0 +1,37 @@
+{
+    "management_command": 0,
+    "beta_command": false,
+    "pro_command": 0,
+    "dm_enabled": 1,
+    "enabled_by_default": 1,
+    "permissions": 0,
+    "invocation_words": ["man"],
+    "description": {
+        "eng": "Get detailed informations from a command",
+        "ita": "Accedi alle informazioni dettagliate di un comando"
+    },
+    "handled_args": {
+        "all": {
+            "eng": "Show all the activated and deactivated modules",
+            "ita": "Mostra tutti i moduli, attivi e disattivi"
+        },
+        "command_name": {
+            "eng": "Show detaild about the given module",
+            "ita": "Mostra i dettagli del modulo passato"
+        }
+    },
+    "handled_params": {
+        "-d": {
+            "eng": "Show just the description",
+            "ita": "Mostra solo la descrizione"
+        },
+        "-u": {
+            "eng": "Show an example of use",
+            "ita": "Mostra un esempio di utilizzo"
+        },
+        "-m": {
+            "eng": "Show the manual",
+            "ita": "Mostra il manuale"
+        }
+    }
+}

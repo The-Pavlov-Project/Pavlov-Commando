@@ -1,0 +1,33 @@
+{
+    "management_command": 0,
+    "beta_command": false,
+    "pro_command": 0,
+    "dm_enabled": 1,
+    "enabled_by_default": true,
+    "permissions": 0,
+    "invocation_words": ["command", "com"],
+    "description": {
+        "eng": "Short description of the command",
+        "ita": "Breve descrizione del comando"
+    },
+    "handled_args": {
+        "": {
+            "eng": "Description of command without args",
+            "ita": "Descrizione del comando senza argomenti"
+        },
+        "arg": {
+            "eng": "Description of executions with this argument",
+            "ita": "Descrizione dell' esecuzione con questo argomento"
+        }
+    },
+    "handled_params": {
+        "-param1": {
+            "eng": "Description of executions with this parameter",
+            "ita": "Descrizione dell'esecizione con questo parametro"
+        },
+        "-param2": {
+            "eng": "Description of executions with this parameter",
+            "ita": "Descrizione dell'esecizione con questo parametro"
+        }
+    }
+}

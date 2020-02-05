@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0792d58e-f77a-41ba-8df3-efa46e99045f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/Pavlov-Commando.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/command_handler.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/commands/module1_name/command_name/command_name.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/commands/module1_name/command_name/command_name.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pvlv_commando/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pvlv_commando/commando/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pvlv_commando/commando/command_descriptor.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pvlv_commando/commando/command_importer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pvlv_commando/commando/modules/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pvlv_commando/commando/modules/base_command_reader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pvlv_commando/commando/shortcut_reader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pvlv_commando/configurations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pvlv_commando/configurations/configuration.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pvlv_commando/languages/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pvlv_commando/languages/languages_handler.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pvlv_commando/manual/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pvlv_commando/manual/manual.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pvlv_commando/manual/manual.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pvlv_commando/manual/translations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pvlv_commando/manual/translations/manual_reply.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pvlv_commando/permissions/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pvlv_commando/pvlv_commando.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pvlv_commando/replyes/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pvlv_commando/replyes/errors_replies.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/test.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1XLxjVByUr1JsqgHfmquoKrB2Ii" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/pvlv_commando/languages/default_replyes" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\smnno\git\Pavlov-Commando\pvlv_commando\languages\default_replyes" />
+      <recent name="C:\Users\smnno\git\Pavlov-Commando\pvlv_commando\manual\translations" />
+      <recent name="C:\Users\smnno\git\Pavlov-Commando\pvlv_commando\permissions" />
+      <recent name="C:\Users\smnno\git\Pavlov-Commando\pvlv_commando\manual" />
+      <recent name="C:\Users\smnno\git\Pavlov-Commando\pvlv_commando\languages" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\smnno\git\Pavlov-Commando\pvlv_commando\descriptors" />
+      <recent name="C:\Users\smnno\git\Pavlov-Commando\pvlv_commando" />
+      <recent name="C:\Users\smnno\git\Pavlov-Commando\examples" />
+      <recent name="C:\Users\smnno\git\Pavlov-Commando\examples\commands" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.command_handler">
+    <configuration name="command_handler" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Pavlov-Commando" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/examples" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\smnno\git\Pavlov-Commando\examples\command_handler.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="setup" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="Pavlov-Commando" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\smnno\git\Pavlov-Commando\venv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/setup.py" />
+      <option name="PARAMETERS" value="build" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.setup" />
+      <item itemvalue="Python.command_handler" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.command_handler" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0792d58e-f77a-41ba-8df3-efa46e99045f" name="Default Changelist" comment="" />
+      <created>1580839310210</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1580839310210</updated>
+      <workItem from="1580839311462" duration="4144000" />
+      <workItem from="1580898794204" duration="4249000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="208" y="138" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1580839413562">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state x="208" y="138" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1504.963@0.0.1504.963" timestamp="1580839413562" />
+    <state x="509" y="286" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1580912479715">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state x="509" y="286" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1504.963@0.0.1504.963" timestamp="1580912479715" />
+    <state x="483" y="230" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1580843233203">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state x="483" y="230" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1504.963@0.0.1504.963" timestamp="1580843233203" />
+    <state x="533" y="238" key="FileChooserDialogImpl" timestamp="1580839395203">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state x="533" y="238" key="FileChooserDialogImpl/0.0.1504.963@0.0.1504.963" timestamp="1580839395203" />
+    <state width="1461" height="256" key="GridCell.Tab.0.bottom" timestamp="1580912908459">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state width="1461" height="256" key="GridCell.Tab.0.bottom/0.0.1504.963@0.0.1504.963" timestamp="1580912908459" />
+    <state width="1461" height="256" key="GridCell.Tab.0.center" timestamp="1580912908458">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state width="1461" height="256" key="GridCell.Tab.0.center/0.0.1504.963@0.0.1504.963" timestamp="1580912908458" />
+    <state width="1461" height="256" key="GridCell.Tab.0.left" timestamp="1580912908458">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state width="1461" height="256" key="GridCell.Tab.0.left/0.0.1504.963@0.0.1504.963" timestamp="1580912908458" />
+    <state width="1461" height="256" key="GridCell.Tab.0.right" timestamp="1580912908458">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state width="1461" height="256" key="GridCell.Tab.0.right/0.0.1504.963@0.0.1504.963" timestamp="1580912908458" />
+    <state x="565" y="194" key="RollbackChangesDialog" timestamp="1580839349945">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state x="565" y="194" key="RollbackChangesDialog/0.0.1504.963@0.0.1504.963" timestamp="1580839349945" />
+    <state x="254" y="125" key="SettingsEditor" timestamp="1580839380549">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state x="254" y="125" key="SettingsEditor/0.0.1504.963@0.0.1504.963" timestamp="1580839380549" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Pavlov_Commando$read_command.coverage" NAME="command_handler Coverage Results" MODIFIED="1580912908442" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples" />
+  </component>
+</project>
