@@ -1,9 +1,9 @@
 import os
-from importlib import import_module
 import logging
+from pvlv_commando.commando.command_importer import importer, build_descriptor
 from pvlv_commando.commando.command_descriptor import CommandDescriptor
 from pvlv_commando.manual.manual import Manual
-from pvlv_commando.configurations.configuration import COMMANDS_DIR
+
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger('pvlv_command')
@@ -21,44 +21,8 @@ class Commando(object):
         """
         Load all the packages and commands should be done only once.
         For efficiency it must be put as a static class for all the project.
-
-        COMMANDS_DIR in the cfg file, the dir of the commands folder, must end with / (example: 'pvlv/commands/')
         """
-        self.__command_list = []
-
-        import_point = COMMANDS_DIR.replace('/', '.')
-
-        # List all the main modules
-        for package in os.listdir(os.path.dirname(COMMANDS_DIR)):
-            # List all the commands inside the single package
-            for command in os.listdir(os.path.dirname('{}{}/'.format(COMMANDS_DIR, package))):
-
-                command_import_point = '.{}.{}'.format(command, command)
-                module = import_module(command_import_point, package=import_point+package)
-
-                # Build class name of the command
-                spl = []
-                for el in command.split('_'):
-                    spl.append(str(el.capitalize()))
-                class_name = ''.join(spl)
-
-                """
-                Read the command description file and create the class to store and access all the data
-                Set data
-                - package membership
-                - command name
-                - read the command file and extract all the other data
-                """
-                cd = CommandDescriptor()
-                cd.package = package
-                cd.name = command
-                cd.read_command('{}{}/{}/{}.json'.format(COMMANDS_DIR, package, command, command))
-
-                # append command (command_descriptor, module, class_name)
-                self.__command_list.append((cd, module, class_name))
-                logger.info(class_name)
-
-        del module
+        self.__command_list = importer()
 
         """
         Structure of the command found
@@ -66,20 +30,16 @@ class Commando(object):
         """
         self.__command_found = None
         self.error = ''
-        self.language = None
-        self.trigger = 'eng'
+        self.language = 'eng'
+        self.trigger = None
         self.arg = None
         self.params = {}
 
-        # Import the manual
+        # Builtin manual
         self.__is_manual = False
 
-        self.__manual = CommandDescriptor()
-        self.__manual.package = 'pavlov_internals'
-        self.__manual.name = 'manual'
-
         dir_path = os.path.dirname(os.path.realpath(__file__))
-        self.__manual.read_command(dir_path+'/manual/manual.json')
+        self.__manual = build_descriptor('builtin', 'manual', dir_path + '/manual/manual.json')
 
         self.__command_list.append((self.__manual, None, None))
 

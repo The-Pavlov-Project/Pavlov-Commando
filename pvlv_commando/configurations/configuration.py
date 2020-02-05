@@ -10,7 +10,8 @@ try:
 except Exception as exc:
     print(exc)
 
-COMMANDS_DIR = parser.get('commands', 'COMMANDS_DIR')
+COMMANDS_DIR = parser.get('commands', 'COMMANDS_DIR', fallback='commands/')
+WITH_MODULES = parser.get('commands', 'COMMANDS_DIR', fallback=True)
 
 
 # Languages Handled for messages
