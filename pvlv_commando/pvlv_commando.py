@@ -1,5 +1,4 @@
 import os
-import logging
 from pvlv_commando.commando.command_importer import (
     importer,
     build_descriptor,
@@ -13,17 +12,7 @@ from pvlv_commando.replyes.errors_replies import (
     command_execution_fail,
 )
 from pvlv_commando.replyes.permissions_replies import insufficient_permission
-
-
-logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-logger = logging.getLogger('pvlv_command')
-
-"""
-fh = logging.FileHandler('logs/pvlv_command.log')
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-fh.setFormatter(formatter)
-logger.addHandler(fh)
-"""
+from pvlv_commando.configurations.configuration import logger
 
 
 class Commando(object):
@@ -37,7 +26,6 @@ class Commando(object):
         For efficiency it must be put as a static class for all the project.
         """
         self.__command_list = importer()
-
         """
         Structure of the command found
         Stored to be executed
@@ -62,12 +50,14 @@ class Commando(object):
         for cd in self.__command_list:
             self.__command_descriptors.append(cd[0])
 
+        logger.info('Commando Loaded')
+
     def __check_command_integrity(self):
         """
         Check if the command has an allowed arg and params
         Do input validation of the arg and params
         """
-        command_descriptor, module, class_name = self.__command_found
+        # command_descriptor, module, class_name = self.__command_found
 
         if not self.params.keys() in self.__manual.handled_params_list():
             self.error = ''
@@ -133,6 +123,7 @@ class Commando(object):
             return
 
         command_descriptor, module, class_name = self.__command_found
+        logger.info('RUN: ' + command_descriptor.name)
 
         if command_descriptor.permissions >= self.__permissions:
             return
@@ -155,6 +146,8 @@ class Commando(object):
         """
         if not self.__is_manual:
             return
+
+        logger.info('RUN: manual')
 
         self.__is_manual = False
         self.error = manual_execution_fail(self.language)  # Set the error in case of fail

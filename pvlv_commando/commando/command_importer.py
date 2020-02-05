@@ -1,12 +1,8 @@
 import os
-import logging
 from importlib import import_module
 from pvlv_commando.configurations.configuration import COMMANDS_DIR
 from pvlv_commando.commando.command_descriptor import CommandDescriptor
-
-
-logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-logger = logging.getLogger('command_importer')
+from pvlv_commando.configurations.configuration import logger
 
 
 """
@@ -81,6 +77,6 @@ def importer():
 
             # append command (command_descriptor, module, class_name)
             command_list.append((cd, imported_module, class_name))
-            logger.info(class_name)
+            logger.info('Command Loaded: ' + class_name)
 
     return command_list

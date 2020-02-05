@@ -4,8 +4,8 @@ from pvlv_commando.pvlv_commando import Commando
 def main():
 
     com = Commando()
-    text = '.man command'  # An example of incoming text from the chat
-    permissions = 0
+    text = '.command'  # An example of incoming text from the chat
+    permissions = 10
 
     if text.startswith('.'):
 
@@ -20,7 +20,7 @@ def main():
             - if your chat have a different parse mode use com.run_manual().replace('**', 'your_format')
             """
             man = com.run_manual()
-            print(man)
+            print(man) if man else None
 
             if com.has_permissions:
                 com.run_command(None)  # here you have to pass the bot object that will be used

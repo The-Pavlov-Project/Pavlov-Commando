@@ -3,8 +3,8 @@ from pvlv_commando.languages.languages_handler import language_selector
 
 def insufficient_permission(language):
 
-    def eng(): return 'Error during Command execution'
-    def ita(): return 'Errore durante l\'esecuzione del comando'
+    def eng(): return 'You don\'t have the permission to run this command'
+    def ita(): return 'Non hai i permessi per eseguire questo comando'
 
     return language_selector(
         language,
