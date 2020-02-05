@@ -12,10 +12,32 @@ def guild_not_pro(language):
     )
 
 
-def command_error(language):
+def command_not_found(language):
 
     def eng(): return 'This is not a command.'
     def ita(): return 'Questo non è un comando.'
+
+    return language_selector(
+        language,
+        eng, ita=ita
+    )
+
+
+def manual_execution_fail(language):
+
+    def eng(): return 'There is a problem in the manual of this command.'
+    def ita(): return 'C\'è un problema nel manuale di questo comando.'
+
+    return language_selector(
+        language,
+        eng, ita=ita
+    )
+
+
+def command_execution_fail(language):
+
+    def eng(): return 'Error during Command execution'
+    def ita(): return 'Errore durante l\'esecuzione del comando'
 
     return language_selector(
         language,

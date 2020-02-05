@@ -47,6 +47,28 @@ def handled_params(language):
     )
 
 
+def command_not_found(language):
+
+    def eng(): return 'I can\'t show the manual of this command cause it doesn\'t exist'
+    def ita(): return 'Non trovo il manuale perchè questo comando non esiste'
+
+    return language_selector(
+        language,
+        eng, ita=ita
+    )
+
+
+def command_insufficient_permissions(language):
+
+    def eng(): return 'You don\'t have the permissions to use this command, so why are you asking for the manual?!'
+    def ita(): return 'Non hai i permessi per eseguire questo comando, quindi perchè chiedi il manuale?!'
+
+    return language_selector(
+        language,
+        eng, ita=ita
+    )
+
+
 def command_mask(language, prefix, main_command, sub_call):
 
     main_command = main_command.replace('_', '.')

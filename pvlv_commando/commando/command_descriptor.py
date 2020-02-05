@@ -15,14 +15,10 @@ class CommandDescriptor(BaseCommandReader):
         self.enabled_by_default = None  # this command is active by default
         self.permissions = None  # permissions to use the command
 
-        self.handled_args = None
-        self.handled_params = None
-
-    def read_arg_by_language(self, language, dictionary):
-        result = {}
-        for key in dictionary.keys():
-            result[key] = self.__read_value_by_language(language, dictionary.get(key))
-        return result
+        self.__handled_args = None
+        self.__handled_args_list = []
+        self.__handled_params = None
+        self.__handled_params_list = []
 
     def read_command(self, command_descriptor_dir):
 
@@ -37,16 +33,42 @@ class CommandDescriptor(BaseCommandReader):
         self.permissions = file.get('permissions')
         self.invocation_words = file.get('invocation_words')
 
-        self.description = file.get('description')
-        self.handled_args = file.get('handled_args')
-        self.handled_params = file.get('handled_params')
+        self.__description = file.get('description')
+        self.__handled_args = file.get('handled_args')
+        self.__handled_args_list = list(self.__handled_args.keys())
+        self.__handled_params = file.get('handled_params')
+        self.__handled_params_list = list(self.__handled_params.keys())
 
         self.examples = file.get('examples')
 
     @property
     def handled_args_list(self):
-        return self.handled_args.keys()
+        return self.__handled_args_list
 
     @property
     def handled_params_list(self):
-        return self.handled_params.keys()
+        return self.__handled_params_list
+
+    @staticmethod
+    def __read_value_by_language(language, dictionary):
+        description = dictionary.get(language)
+        if description is None:
+            description = dictionary.get('eng')
+            if description is None:
+                raise Exception('There is not language descriptions in this command')
+        return description
+
+    def handled_args_by_language(self, language):
+        result = {}
+        for key in self.__handled_args.keys():
+            result[key] = self.__read_value_by_language(language, self.__handled_args.get(key))
+        return result
+
+    def handled_params_by_language(self, language):
+        result = {}
+        for key in self.__handled_params.keys():
+            result[key] = self.__read_value_by_language(language, self.__handled_params.get(key))
+        return result
+
+    def description_by_language(self, language):
+        return self.__read_value_by_language(language, self.__description)

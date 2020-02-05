@@ -1,8 +1,18 @@
 import os
 import logging
-from pvlv_commando.commando.command_importer import importer, build_descriptor
+from pvlv_commando.commando.command_importer import (
+    importer,
+    build_descriptor,
+)
 from pvlv_commando.commando.command_descriptor import CommandDescriptor
+from pvlv_commando.commando.command_structure_reader import read_command_structure
 from pvlv_commando.manual.manual import Manual
+from pvlv_commando.replyes.errors_replies import (
+    command_not_found,
+    manual_execution_fail,
+    command_execution_fail,
+)
+from pvlv_commando.replyes.permissions_replies import insufficient_permission
 
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -17,6 +27,10 @@ logger.addHandler(fh)
 
 
 class Commando(object):
+    """
+    Commando class to handle commands in a easy way
+    The exception handling must be done outside of this class
+    """
     def __init__(self):
         """
         Load all the packages and commands should be done only once.
@@ -35,38 +49,58 @@ class Commando(object):
         self.arg = None
         self.params = {}
 
+        self.__permissions = 0
+
+        # Do not append built in commands
         # Builtin manual
         self.__is_manual = False
 
         dir_path = os.path.dirname(os.path.realpath(__file__))
         self.__manual = build_descriptor('builtin', 'manual', dir_path + '/manual/manual.json')
 
-        self.__command_list.append((self.__manual, None, None))
+        self.__command_descriptors = []
+        for cd in self.__command_list:
+            self.__command_descriptors.append(cd[0])
 
-    def find_command(self, text: str, language: str):
+    def __check_command_integrity(self):
+        """
+        Check if the command has an allowed arg and params
+        Do input validation of the arg and params
+        """
+        command_descriptor, module, class_name = self.__command_found
+
+        if not self.params.keys() in self.__manual.handled_params_list():
+            self.error = ''
+
+    def find_command(self, text: str, language: str, permissions: int):
         """
         Find if there is a command in the text
         N.B.: YOU HAVE TO REMOVE THE COMMAND CHAR/STR TRIGGER AND SEND CLEAN TEXT
 
         :param text: the message without the chat/str command invocation
         :param language: the language code for message response
+        :param permissions: the user permission in the guild/chat
         :return: True if there is a command else False
         """
         self.language = language
+        self.__permissions = permissions
 
-        self.__read_command_structure(text)
+        self.trigger, self.arg, self.params = read_command_structure(text)
 
+        # Check build in commands
+        if self.trigger in self.__manual.invocation_words:
+            self.__is_manual = True
+            return
+
+        # Check custom commands
         for command in self.__command_list:
             command_descriptor, module, class_name = command
             if self.trigger in command_descriptor.invocation_words:
                 self.__command_found = command
-
-                if self.__manual == command_descriptor:
-                    self.__is_manual = True
                 return
 
-        self.error = 'Command not found'
-        raise Exception
+        self.error = command_not_found(self.language)
+        raise Exception('Command not found')
 
     @property
     def command(self):
@@ -79,8 +113,15 @@ class Commando(object):
         return command_descriptor
 
     @property
-    def is_manual(self):
-        return self.__is_manual
+    def has_permissions(self):
+        command_descriptor, module, class_name = self.__command_found
+        if command_descriptor.permissions >= self.__permissions:
+            return False
+        return True
+
+    @property
+    def insufficient_permissions(self):
+        return insufficient_permission(self.language)
 
     def run_command(self, bot):
         """
@@ -88,77 +129,44 @@ class Commando(object):
         :param bot: the bot var, that will be passed to the command. Used to send message and perform actions.
         If you have multiple params to pass to the command use a tuple inside the bot or a dict
         """
-        if self.is_manual:
-            self.__is_manual = False
+        if self.__is_manual:
             return
 
         command_descriptor, module, class_name = self.__command_found
 
+        if command_descriptor.permissions >= self.__permissions:
+            return
+
         command_class = getattr(module, class_name)
 
-        try:
-            command = command_class(bot, self.language, command_descriptor, self.arg, self.params)
-            command.run()
-        except Exception as exc:
-            self.error = 'Error during command execution'
-            raise exc
+        command = command_class(bot, self.language, command_descriptor, self.arg, self.params)
+        command.run()
+
+        self.error = command_execution_fail(self.language)
+        self.__permissions = 0  # Reset permissions
 
     def run_manual(self, max_chunk_len=1500):
         """
+        The manual is cut in chunks and return the chunks array
+        This is made because some chats have a limit in message len
+
         :param max_chunk_len: the max len of the text
         :return: an array of strings, where each string has the max len of the max_chunk_len
         """
-        self.error = 'Error during manual execution'
+        if not self.__is_manual:
+            return
 
-        commands_descriptor = []
-        for cd in self.__command_list:
-            commands_descriptor.append(cd[0])
+        self.__is_manual = False
+        self.error = manual_execution_fail(self.language)  # Set the error in case of fail
 
-        manual = Manual(self.language, commands_descriptor, self.arg, self.params)
-        m = manual.run()
-
-        if len(m) <= max_chunk_len:
-            out = [m]
-        else:
-            out = []
-        """
-        Cut the manual in chunks and return the chunks array
-        This is made because some chats have a limit in message len
-        """
-        while len(m) > max_chunk_len:
-            chunk = m[:max_chunk_len]
-            m = m[max_chunk_len:]
-            out.append(chunk)
-
-        return out
-
-    def __read_command_structure(self, text):
-        """
-        :param text: must be a string
-        :return: argument as string, parameters as tuple [parameter, data]
-
-        example:
-        mal the cat is on the table -f lol this is cute -d 12
-        """
-        text_list = text.split()
-
-        self.trigger = text_list.pop(0)  # remove the command trigger
-
-        if len(text_list) is 1:
-            self.arg = text_list[0]
-
-        read_params = False
-        current_param = None
-        while text_list:
-            word = text_list.pop(0)
-
-            if str.startswith(word, '-'):
-                read_params = True
-                current_param = text_list[1:]
-                self.params[current_param] = None
-
-            elif read_params:
-                self.params[current_param] += word + ' '
-
-            else:
-                self.arg += word + ' '
+        manual = Manual(
+            self.language,
+            self.__manual,
+            self.__command_descriptors,
+            self.arg,
+            self.params,
+            max_chunk_len,
+            self.__permissions
+        )
+        self.__permissions = 0  # Reset permissions
+        return manual.run()

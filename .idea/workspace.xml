@@ -2,10 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0792d58e-f77a-41ba-8df3-efa46e99045f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/pvlv_commando/commando/command_structure_reader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pvlv_commando/permissions/execute_permission.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pvlv_commando/replyes/permissions_replies.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pvlv_commando/commando/command_importer.py" beforeDir="false" afterPath="$PROJECT_DIR$/pvlv_commando/commando/command_importer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pvlv_commando/configurations/configuration.py" beforeDir="false" afterPath="$PROJECT_DIR$/pvlv_commando/configurations/configuration.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/command_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/command_handler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pvlv_commando/commando/command_descriptor.py" beforeDir="false" afterPath="$PROJECT_DIR$/pvlv_commando/commando/command_descriptor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pvlv_commando/commando/modules/base_command_reader.py" beforeDir="false" afterPath="$PROJECT_DIR$/pvlv_commando/commando/modules/base_command_reader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pvlv_commando/manual/manual.py" beforeDir="false" afterPath="$PROJECT_DIR$/pvlv_commando/manual/manual.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pvlv_commando/manual/translations/manual_reply.py" beforeDir="false" afterPath="$PROJECT_DIR$/pvlv_commando/manual/translations/manual_reply.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pvlv_commando/pvlv_commando.py" beforeDir="false" afterPath="$PROJECT_DIR$/pvlv_commando/pvlv_commando.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pvlv_commando/replyes/errors_replies.py" beforeDir="false" afterPath="$PROJECT_DIR$/pvlv_commando/replyes/errors_replies.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,29 +49,7 @@
       <recent name="C:\Users\smnno\git\Pavlov-Commando\examples\commands" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.command_handler (1)">
-    <configuration name="command_handler (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Pavlov-Commando" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/examples" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/examples/command_handler.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.command_handler">
     <configuration name="command_handler" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Pavlov-Commando" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -112,11 +97,9 @@
     <list>
       <item itemvalue="Python.setup" />
       <item itemvalue="Python.command_handler" />
-      <item itemvalue="Python.command_handler (1)" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.command_handler (1)" />
         <item itemvalue="Python.command_handler" />
       </list>
     </recent_temporary>
@@ -144,7 +127,7 @@
       <option name="presentableId" value="Default" />
       <updated>1580839310210</updated>
       <workItem from="1580839311462" duration="4144000" />
-      <workItem from="1580898794204" duration="8776000" />
+      <workItem from="1580898794204" duration="25405000" />
     </task>
     <task id="LOCAL-00001" summary="Command handler first test">
       <created>1580912950057</created>
@@ -153,7 +136,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580912950057</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="separation of command importer">
+      <created>1580918348572</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1580918348572</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -161,13 +151,14 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Command handler first test" />
-    <option name="LAST_COMMIT_MESSAGE" value="Command handler first test" />
+    <MESSAGE value="separation of command importer" />
+    <option name="LAST_COMMIT_MESSAGE" value="separation of command importer" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="208" y="138" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1580839413562">
+    <state x="208" y="138" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1580926123814">
       <screen x="0" y="0" width="1504" height="963" />
     </state>
-    <state x="208" y="138" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1504.963@0.0.1504.963" timestamp="1580839413562" />
+    <state x="208" y="138" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1504.963@0.0.1504.963" timestamp="1580926123814" />
     <state x="509" y="286" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1580912479715">
       <screen x="0" y="0" width="1504" height="963" />
     </state>
@@ -176,46 +167,46 @@
       <screen x="0" y="0" width="1504" height="963" />
     </state>
     <state x="483" y="230" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1504.963@0.0.1504.963" timestamp="1580843233203" />
-    <state x="377" y="77" key="CommitChangelistDialog2" timestamp="1580912949002">
+    <state x="377" y="77" key="CommitChangelistDialog2" timestamp="1580918347723">
       <screen x="0" y="0" width="1504" height="963" />
     </state>
-    <state x="377" y="77" key="CommitChangelistDialog2/0.0.1504.963@0.0.1504.963" timestamp="1580912949002" />
+    <state x="377" y="77" key="CommitChangelistDialog2/0.0.1504.963@0.0.1504.963" timestamp="1580918347723" />
     <state x="533" y="238" key="FileChooserDialogImpl" timestamp="1580839395203">
       <screen x="0" y="0" width="1504" height="963" />
     </state>
     <state x="533" y="238" key="FileChooserDialogImpl/0.0.1504.963@0.0.1504.963" timestamp="1580839395203" />
-    <state width="1461" height="256" key="GridCell.Tab.0.bottom" timestamp="1580916263543">
+    <state width="1461" height="256" key="GridCell.Tab.0.bottom" timestamp="1580937721508">
       <screen x="0" y="0" width="1504" height="963" />
     </state>
-    <state width="1461" height="256" key="GridCell.Tab.0.bottom/0.0.1504.963@0.0.1504.963" timestamp="1580916263543" />
-    <state width="1461" height="256" key="GridCell.Tab.0.center" timestamp="1580916263543">
+    <state width="1461" height="256" key="GridCell.Tab.0.bottom/0.0.1504.963@0.0.1504.963" timestamp="1580937721508" />
+    <state width="1461" height="256" key="GridCell.Tab.0.center" timestamp="1580937721507">
       <screen x="0" y="0" width="1504" height="963" />
     </state>
-    <state width="1461" height="256" key="GridCell.Tab.0.center/0.0.1504.963@0.0.1504.963" timestamp="1580916263543" />
-    <state width="1461" height="256" key="GridCell.Tab.0.left" timestamp="1580916263543">
+    <state width="1461" height="256" key="GridCell.Tab.0.center/0.0.1504.963@0.0.1504.963" timestamp="1580937721507" />
+    <state width="1461" height="256" key="GridCell.Tab.0.left" timestamp="1580937721507">
       <screen x="0" y="0" width="1504" height="963" />
     </state>
-    <state width="1461" height="256" key="GridCell.Tab.0.left/0.0.1504.963@0.0.1504.963" timestamp="1580916263543" />
-    <state width="1461" height="256" key="GridCell.Tab.0.right" timestamp="1580916263543">
+    <state width="1461" height="256" key="GridCell.Tab.0.left/0.0.1504.963@0.0.1504.963" timestamp="1580937721507" />
+    <state width="1461" height="256" key="GridCell.Tab.0.right" timestamp="1580937721507">
       <screen x="0" y="0" width="1504" height="963" />
     </state>
-    <state width="1461" height="256" key="GridCell.Tab.0.right/0.0.1504.963@0.0.1504.963" timestamp="1580916263543" />
-    <state width="1461" height="317" key="GridCell.Tab.1.bottom" timestamp="1580916260795">
+    <state width="1461" height="256" key="GridCell.Tab.0.right/0.0.1504.963@0.0.1504.963" timestamp="1580937721507" />
+    <state width="1461" height="207" key="GridCell.Tab.1.bottom" timestamp="1580935724494">
       <screen x="0" y="0" width="1504" height="963" />
     </state>
-    <state width="1461" height="317" key="GridCell.Tab.1.bottom/0.0.1504.963@0.0.1504.963" timestamp="1580916260795" />
-    <state width="1461" height="317" key="GridCell.Tab.1.center" timestamp="1580916260794">
+    <state width="1461" height="207" key="GridCell.Tab.1.bottom/0.0.1504.963@0.0.1504.963" timestamp="1580935724494" />
+    <state width="1461" height="207" key="GridCell.Tab.1.center" timestamp="1580935724494">
       <screen x="0" y="0" width="1504" height="963" />
     </state>
-    <state width="1461" height="317" key="GridCell.Tab.1.center/0.0.1504.963@0.0.1504.963" timestamp="1580916260794" />
-    <state width="1461" height="317" key="GridCell.Tab.1.left" timestamp="1580916260794">
+    <state width="1461" height="207" key="GridCell.Tab.1.center/0.0.1504.963@0.0.1504.963" timestamp="1580935724494" />
+    <state width="1461" height="207" key="GridCell.Tab.1.left" timestamp="1580935724494">
       <screen x="0" y="0" width="1504" height="963" />
     </state>
-    <state width="1461" height="317" key="GridCell.Tab.1.left/0.0.1504.963@0.0.1504.963" timestamp="1580916260794" />
-    <state width="1461" height="317" key="GridCell.Tab.1.right" timestamp="1580916260794">
+    <state width="1461" height="207" key="GridCell.Tab.1.left/0.0.1504.963@0.0.1504.963" timestamp="1580935724494" />
+    <state width="1461" height="207" key="GridCell.Tab.1.right" timestamp="1580935724494">
       <screen x="0" y="0" width="1504" height="963" />
     </state>
-    <state width="1461" height="317" key="GridCell.Tab.1.right/0.0.1504.963@0.0.1504.963" timestamp="1580916260794" />
+    <state width="1461" height="207" key="GridCell.Tab.1.right/0.0.1504.963@0.0.1504.963" timestamp="1580935724494" />
     <state x="565" y="194" key="RollbackChangesDialog" timestamp="1580839349945">
       <screen x="0" y="0" width="1504" height="963" />
     </state>
@@ -229,15 +220,20 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/pvlv_commando/commando/command_importer.py</url>
-          <line>62</line>
-          <option name="timeStamp" value="5" />
+          <url>file://$PROJECT_DIR$/pvlv_commando/manual/manual.py</url>
+          <line>103</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/pvlv_commando/manual/manual.py</url>
+          <line>145</line>
+          <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Pavlov_Commando$command_handler__1_.coverage" NAME="command_handler (1) Coverage Results" MODIFIED="1580916263534" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples" />
-    <SUITE FILE_PATH="coverage/Pavlov_Commando$read_command.coverage" NAME="command_handler Coverage Results" MODIFIED="1580916260753" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples" />
+    <SUITE FILE_PATH="coverage/Pavlov_Commando$command_handler__1_.coverage" NAME="command_handler (1) Coverage Results" MODIFIED="1580926117951" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples" />
+    <SUITE FILE_PATH="coverage/Pavlov_Commando$read_command.coverage" NAME="command_handler Coverage Results" MODIFIED="1580937721490" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples" />
   </component>
 </project>
