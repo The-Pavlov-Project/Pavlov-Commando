@@ -9,7 +9,7 @@ def read_command_structure(text):
     text_list = text.split()
 
     trigger = text_list.pop(0)  # remove the command trigger
-    arg = None
+    arg = ''
     params = {}
 
     if len(text_list) is 1:
@@ -23,8 +23,8 @@ def read_command_structure(text):
 
         if str.startswith(word, '-'):
             read_params = True
-            current_param = text_list[1:]
-            params[current_param] = None
+            current_param = word
+            params[current_param] = ''
 
         elif read_params:
             params[current_param] += word + ' '
@@ -33,3 +33,6 @@ def read_command_structure(text):
             arg += word + ' '
 
     return trigger, arg, params
+
+# potential_argument = text_list[:1][0] if len(text_list) > 1 else '-'
+# next_word = str.startswith(next_word, '-')

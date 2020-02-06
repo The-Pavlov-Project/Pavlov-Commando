@@ -6,12 +6,12 @@ from pvlv_commando.commando.command_importer import (
 from pvlv_commando.commando.command_descriptor import CommandDescriptor
 from pvlv_commando.commando.command_structure_reader import read_command_structure
 from pvlv_commando.manual.manual import Manual
-from pvlv_commando.replyes.errors_replies import (
-    command_not_found,
-    manual_execution_fail,
-    command_execution_fail,
+from pvlv_commando.exceptions.permissions_exceptions import InsufficientPermissions
+from pvlv_commando.exceptions.errors_exceptions import (
+    CommandNotFound,
+    ManualExecutionFail,
+    CommandExecutionFail,
 )
-from pvlv_commando.replyes.permissions_replies import insufficient_permission
 from pvlv_commando.configurations.configuration import logger
 
 
@@ -31,7 +31,6 @@ class Commando(object):
         Stored to be executed
         """
         self.__command_found = None
-        self.error = ''
         self.language = 'eng'
         self.trigger = None
         self.arg = None
@@ -60,7 +59,7 @@ class Commando(object):
         # command_descriptor, module, class_name = self.__command_found
 
         if not self.params.keys() in self.__manual.handled_params_list():
-            self.error = ''
+            pass
 
     def find_command(self, text: str, language: str, permissions: int):
         """
@@ -89,8 +88,7 @@ class Commando(object):
                 self.__command_found = command
                 return
 
-        self.error = command_not_found(self.language)
-        raise Exception('Command not found')
+        raise CommandNotFound(self.language, self)
 
     @property
     def command(self):
@@ -102,17 +100,6 @@ class Commando(object):
         command_descriptor, module, class_name = self.__command_found
         return command_descriptor
 
-    @property
-    def has_permissions(self):
-        command_descriptor, module, class_name = self.__command_found
-        if command_descriptor.permissions >= self.__permissions:
-            return False
-        return True
-
-    @property
-    def insufficient_permissions(self):
-        return insufficient_permission(self.language)
-
     def run_command(self, bot):
         """
         Execute the command
@@ -123,18 +110,27 @@ class Commando(object):
             return
 
         command_descriptor, module, class_name = self.__command_found
-        logger.info('RUN: ' + command_descriptor.name)
 
         if command_descriptor.permissions >= self.__permissions:
-            return
+            raise InsufficientPermissions(self.language)
+        self.__permissions = 0  # Reset permissions
+
+        logger.info('RUN: ' + command_descriptor.name)
 
         command_class = getattr(module, class_name)
 
-        command = command_class(bot, self.language, command_descriptor, self.arg, self.params)
-        command.run()
-
-        self.error = command_execution_fail(self.language)
-        self.__permissions = 0  # Reset permissions
+        try:
+            command = command_class(bot, self.language, command_descriptor, self.arg, self.params)
+            command.run()
+        except Exception as exc:
+            logger.error(exc)
+            raise CommandExecutionFail(
+                self.language,
+                full_exception=exc,
+                command=command_descriptor,
+                arg=self.arg,
+                params=self.params
+            )
 
     def run_manual(self, max_chunk_len=1500):
         """
@@ -146,20 +142,22 @@ class Commando(object):
         """
         if not self.__is_manual:
             return
+        self.__is_manual = False
 
         logger.info('RUN: manual')
 
-        self.__is_manual = False
-        self.error = manual_execution_fail(self.language)  # Set the error in case of fail
-
-        manual = Manual(
-            self.language,
-            self.__manual,
-            self.__command_descriptors,
-            self.arg,
-            self.params,
-            max_chunk_len,
-            self.__permissions
-        )
-        self.__permissions = 0  # Reset permissions
-        return manual.run()
+        try:
+            manual = Manual(
+                self.language,
+                self.__manual,
+                self.__command_descriptors,
+                self.arg,
+                self.params,
+                max_chunk_len,
+                self.__permissions
+            )
+            self.__permissions = 0  # Reset permissions
+            return manual.run()
+        except Exception as exc:
+            logger.error(exc)
+            raise ManualExecutionFail(self.language, self, full_exception=exc)
