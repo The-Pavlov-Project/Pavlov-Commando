@@ -49,7 +49,7 @@ class Commando(object):
         for cd in self.__command_list:
             self.__command_descriptors.append(cd[0])
 
-        logger.info('Commando Loaded')
+        logger.info('Commando Module Ready')
 
     def __check_command_integrity(self):
         """

@@ -3,8 +3,7 @@
 /venv/
 /build/
 /dist/
-/pvlv_img_builder.egg-info/
-
+/pvlv_commando.egg-info/
 
 *.pyc
 *.swp

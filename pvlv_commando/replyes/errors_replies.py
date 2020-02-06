@@ -36,8 +36,8 @@ def manual_execution_fail(language):
 
 def command_execution_fail(language):
 
-    def eng(): return 'Error during Command execution'
-    def ita(): return 'Errore durante l\'esecuzione del comando'
+    def eng(): return 'Error during command execution.'
+    def ita(): return 'Errore durante l\'esecuzione del comando.'
 
     return language_selector(
         language,
@@ -47,8 +47,8 @@ def command_execution_fail(language):
 
 def parse_error(language, argument, suggestion):
 
-    def eng(): return 'The value: "{}" is not valid.\nTry something like "{}"'.format(argument, suggestion)
-    def ita(): return 'Il valore: "{}" non è valido.\nProva ad usare "{}"'.format(argument, suggestion)
+    def eng(): return 'The value: "{}" is not valid.\nTry something like "{}".'.format(argument, suggestion)
+    def ita(): return 'Il valore: "{}" non è valido.\nProva ad usare "{}".'.format(argument, suggestion)
 
     return language_selector(
         language,

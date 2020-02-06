@@ -7,7 +7,7 @@ packages = find_packages(exclude=['tests*'])
 
 setup(
     name='pvlv_commando',
-    version='0.0.1',
+    version='0.0.2',
     license='LGPLv3',
 
     author='AbbestiaDC',
@@ -18,6 +18,7 @@ setup(
     url='https://github.com/The-Pavlov-Project/Pavlov-Commando',
 
     packages=packages,
+    include_package_data=True,
 
     classifiers=[
         "Programming Language :: Python",

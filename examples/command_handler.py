@@ -1,11 +1,11 @@
 from pvlv_commando.pvlv_commando import Commando
-from pvlv_commando import CommandExecutionFail
+from pvlv_commando import CommandExecutionFail, ManualExecutionFail
 
 
 def main():
 
     com = Commando()
-    text = '.command la vita è bella -d ciao -f -g'  # An example of incoming text from the chat
+    text = '.command la vita se bella -d ciao -f -g'  # An example of incoming text from the chat
     permissions = 10
 
     if text.startswith('.'):
@@ -25,10 +25,14 @@ def main():
 
             com.run_command(None)  # here you have to pass the bot object that will be used
 
+        # Do exception handling as you please
         except CommandExecutionFail as exc:
-
             print(exc)  # the exception to send in chat
-            print(exc.error_report)  # the full report of the exception to send to a log chat or fot internal log.
+            print(exc.error_report)  # the full report of the exception to send to a log chat or for internal log.
+
+        except ManualExecutionFail as exc:
+            print(exc)  # the exception to send in chat
+            print(exc.error_report)  # the full report of the exception to send to a log chat or for internal log.
 
         except Exception as exc:
             print(exc)  # the exception to send in chat

@@ -5,10 +5,11 @@ To handle commands in a easy way
 ##Example
 ```python
 from pvlv_commando.pvlv_commando import Commando
+from pvlv_commando import CommandExecutionFail, ManualExecutionFail
 
 def handler():
     com = Commando()
-    text = '.command'  # An example of incoming text from the chat
+    text = '.command la vita se bella -d ciao -f -g'  # An example of incoming text from the chat
     permissions = 10
 
     if text.startswith('.'):
@@ -26,17 +27,19 @@ def handler():
             man = com.run_manual()
             print(man) if man else None
 
-            if com.has_permissions:
-                com.run_command(None)  # here you have to pass the bot object that will be used
-            else:
-                p = com.insufficient_permissions
-                print(p)
+            com.run_command(None)  # here you have to pass the bot object that will be used
+
+        # Do exception handling as you please
+        except CommandExecutionFail as exc:
+            print(exc)  # the exception to send in chat
+            print(exc.error_report)  # the full report of the exception to send to a log chat or for internal log.
+
+        except ManualExecutionFail as exc:
+            print(exc)  # the exception to send in chat
+            print(exc.error_report)  # the full report of the exception to send to a log chat or for internal log.
 
         except Exception as exc:
-            print(exc)  # for internal log
-
-            error = com.error  # send to chat a message to notify the error
-            print(error)
+            print(exc)  # the exception to send in chat
 ```
 
 ##Configurations file:
