@@ -54,3 +54,19 @@ COMMANDS_DIR = commands/
 [debug]
 DEBUG = True
 ```
+
+### Auto Command creation
+With this tool you can automatically create a new command, with the default folders and files
+```python
+from pvlv_commando import NewCommand
+
+
+def main():
+    # define the module name and the command name (use underscores only)
+    nc = NewCommand('new_module', 'new_command')
+    nc.create()
+
+
+if __name__ == '__main__':
+    main()
+```

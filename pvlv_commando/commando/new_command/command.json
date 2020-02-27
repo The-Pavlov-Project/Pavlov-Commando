@@ -2,9 +2,12 @@
     "management_command": 0,
     "beta_command": false,
     "pro_command": 0,
-    "dm_enabled": 1,
+    "dm_enabled": true,
     "enabled_by_default": true,
     "permissions": 0,
+    "cost": 20,
+    "hourly_max_uses": 10,
+    "daily_max_uses": 90,
     "invocation_words": ["command", "com"],
     "description": {
         "eng": "Short description of the command",

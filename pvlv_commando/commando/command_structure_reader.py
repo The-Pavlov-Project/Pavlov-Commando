@@ -33,6 +33,3 @@ def read_command_structure(text):
             arg += word + ' '
 
     return trigger, arg, params
-
-# potential_argument = text_list[:1][0] if len(text_list) > 1 else '-'
-# next_word = str.startswith(next_word, '-')

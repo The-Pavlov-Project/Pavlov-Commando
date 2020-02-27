@@ -21,6 +21,5 @@ class CommandName(object):
             setattr(self, name, param[1])
 
     def run(self):
-        ciao
         print('Command has been run arg: {}'.format(self.arg))
 

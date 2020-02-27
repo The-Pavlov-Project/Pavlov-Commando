@@ -1,7 +1,10 @@
 from pvlv_commando.replyes.errors_replies import (
     command_not_found,
-    manual_execution_fail,
     command_execution_fail,
+    arg_void_not_allowed,
+    parm_not_found_error,
+    max_hourly_uses_error,
+    max_daily_uses_error,
 )
 from pvlv_commando.exceptions.command_error_report import command_error_report
 
@@ -47,18 +50,37 @@ class CommandExecutionFail(CommandException):
         return self.public_exc
 
 
-class ManualExecutionFail(CommandException):
+class ArgVoidNotAllowed(CommandException):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.public_exc = manual_execution_fail(self.language)
-        self.error_report = command_error_report(
-            self.public_exc,
-            self.full_exception,
-            self.command,
-            self.arg,
-            self.params,
-        )
+        self.public_exc = arg_void_not_allowed(self.language)
 
     def __str__(self):
         return self.public_exc
 
+
+class ParamNotFound(CommandException):
+    def __init__(self, language, param: str, *args, **kwargs):
+        super().__init__(language, *args, **kwargs)
+        self.public_exc = parm_not_found_error(self.language, param)
+
+    def __str__(self):
+        return self.public_exc
+
+
+class MaxHourlyUses(CommandException):
+    def __init__(self, language, max_hourly: int, max_daily: int, *args, **kwargs):
+        super().__init__(language, *args, **kwargs)
+        self.public_exc = max_hourly_uses_error(self.language, max_hourly, max_daily)
+
+    def __str__(self):
+        return self.public_exc
+
+
+class MaxDailyUses(CommandException):
+    def __init__(self, language, max_daily: int, *args, **kwargs):
+        super().__init__(language, *args, **kwargs)
+        self.public_exc = max_daily_uses_error(self.language, max_daily)
+
+    def __str__(self):
+        return self.public_exc

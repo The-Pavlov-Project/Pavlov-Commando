@@ -4,6 +4,7 @@ from pvlv_commando.configurations.configuration import COMMANDS_DIR
 from pvlv_commando.commando.command_descriptor import CommandDescriptor
 from pvlv_commando.configurations.configuration import logger
 
+from pvlv_commando.commando.new_command.new_command import NewCommand
 
 """
 Format the command_dir string
@@ -77,6 +78,6 @@ def importer():
 
             # append command (command_descriptor, module, class_name)
             command_list.append((cd, imported_module, class_name))
-            logger.info('Command Loaded: ' + class_name)
+            logger.info('In module: <{}>, loaded: <{}>'.format(module, class_name))
 
     return command_list
