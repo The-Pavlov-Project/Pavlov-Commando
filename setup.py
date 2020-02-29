@@ -7,7 +7,7 @@ packages = find_packages(exclude=['tests*'])
 
 setup(
     name='pvlv_commando',
-    version='0.0.2',
+    version='0.0.5',
     license='LGPLv3',
 
     author='AbbestiaDC',
@@ -27,6 +27,5 @@ setup(
 
     python_requires='>=3.6',
     install_requires=[
-        'Pillow',
     ],
 )

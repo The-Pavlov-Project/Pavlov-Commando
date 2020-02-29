@@ -1,8 +1,5 @@
 import os
-from pvlv_commando.commando.command_importer import (
-    importer,
-    build_descriptor,
-)
+from pvlv_commando.commando.command_importer import Importer
 from pvlv_commando.commando.command_descriptor import CommandDescriptor
 from pvlv_commando.commando.command_structure_reader import read_command_structure
 from pvlv_commando.manual.manual import Manual
@@ -28,7 +25,7 @@ class Commando(object):
         Load all the packages and commands should be done only once.
         For efficiency it must be put as a static class for all the project.
         """
-        self.__command_list = importer()
+        self.__command_list = Importer().import_commands()
 
         """
         Input data, to check run the command
@@ -55,7 +52,7 @@ class Commando(object):
 
         # Builtin manual
         self.__is_manual = False
-        self.__manual_descriptor = build_descriptor(
+        self.__manual_descriptor = Importer.build_descriptor(
             'builtin', 'manual', os.path.dirname(os.path.realpath(__file__)) + '/manual/manual.json'
         )
 

@@ -15,4 +15,4 @@ from pvlv_commando.exceptions.errors_exceptions import (
 )
 from pvlv_commando.exceptions.permissions_exceptions import InsufficientPermissions
 
-from pvlv_commando.commando.new_command.new_command import NewCommand
+from pvlv_commando.commando.auto_command_creation.start_command import StartCommand

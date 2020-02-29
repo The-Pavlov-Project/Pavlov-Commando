@@ -1,8 +1,8 @@
-from pvlv_commando import NewCommand
+from pvlv_commando import StartCommand
 
 
 def main():
-    nc = NewCommand('new_module', 'new_command')
+    nc = StartCommand('new_module', 'new_command')
     nc.create()
 
 

@@ -1,7 +1,7 @@
 import os
 
 
-class NewCommand(object):
+class StartCommand(object):
 
     def __init__(self, module_name, command_name):
         self.__module_name = module_name
@@ -31,7 +31,7 @@ class NewCommand(object):
     def __copy_files(self, extension):
         file_creation_dir = '{}/{}.{}'.format(self.command_dir, self.__command_name, extension)
         full_copy_path = os.path.dirname(__file__)
-        file_copy_dir = '{}/command.{}'.format(full_copy_path, extension)
+        file_copy_dir = '{}/command_example/command_example.{}'.format(full_copy_path, extension)
 
         """
         Try to open the file, if the file do not exist create it.
@@ -54,4 +54,3 @@ class NewCommand(object):
 
         self.__copy_files('json')
         self.__copy_files('py')
-
