@@ -15,17 +15,30 @@ from pvlv_commando.exceptions.errors_exceptions import (
 from pvlv_commando.configurations.configuration import logger
 
 
+"""
+Load all the packages and commands should be done only once.
+For efficiency it must be put as a static class for all the project.
+"""
+COMMAND_LIST = Importer().import_commands()
+
+MANUAL_DESCRIPTOR = Importer.build_descriptor(
+    'builtin', 'manual', os.path.dirname(os.path.realpath(__file__)) + '/manual/manual.json'
+)
+
+# Create the list of the commands descriptors that will be used in the manual command
+COMMAND_DESCRIPTORS = []
+for cd in COMMAND_LIST:
+    COMMAND_DESCRIPTORS.append(cd[0])  # class that contains json commands info
+
+logger.info('Commands Loaded')
+
+
 class Commando(object):
     """
     Commando class to handle commands in a easy way
     The exception handling must be done outside of this class
     """
     def __init__(self):
-        """
-        Load all the packages and commands should be done only once.
-        For efficiency it must be put as a static class for all the project.
-        """
-        self.__command_list = Importer().import_commands()
 
         """
         Input data, to check run the command
@@ -52,16 +65,6 @@ class Commando(object):
 
         # Builtin manual
         self.__is_manual = False
-        self.__manual_descriptor = Importer.build_descriptor(
-            'builtin', 'manual', os.path.dirname(os.path.realpath(__file__)) + '/manual/manual.json'
-        )
-
-        # Create the list of the commands descriptors that will be used in the manual command
-        self.__command_descriptors = []
-        for cd in self.__command_list:
-            self.__command_descriptors.append(cd[0])  # class that contains json commands info
-
-        logger.info('Commando Module Ready')
 
     def __check_command_integrity(self, command_descriptor: CommandDescriptor):
         """
@@ -97,19 +100,24 @@ class Commando(object):
         self.__trigger, self.__arg, self.__params = read_command_structure(self.text)
 
         # Check build in commands
-        if self.__trigger in self.__manual_descriptor.invocation_words:
+        if self.__trigger in MANUAL_DESCRIPTOR.invocation_words:
             self.__is_manual = True
-            return self.__manual_descriptor.name
+            return MANUAL_DESCRIPTOR.name
 
         # Check in the others commands
         else:
-            for command in self.__command_list:
+            for command in COMMAND_LIST:
                 command_descriptor, module_import, class_name = command
                 if self.__trigger in command_descriptor.invocation_words:
                     self.__command_found = command
                     return command_descriptor.name
             else:
                 raise CommandNotFound(self.language, command=self.__trigger, arg=self.__arg, params=self.__params)
+
+    @property
+    def run_safe(self):
+        command_descriptor, module_import, class_name = self.__command_found
+        return not command_descriptor.thread_safe
 
     def run_command(self, bot, max_chunk_len=1500):
         """
@@ -141,13 +149,13 @@ class Commando(object):
             logger.info('RUN: manual')
 
             self.__is_manual = False
-            self.__check_command_integrity(self.__manual_descriptor)
+            self.__check_command_integrity(MANUAL_DESCRIPTOR)
 
             try:
                 manual = Manual(
                     self.language,
-                    self.__manual_descriptor,
-                    self.__command_descriptors,
+                    MANUAL_DESCRIPTOR,
+                    COMMAND_DESCRIPTORS,
                     self.__arg,
                     self.__params,
                     max_chunk_len,
@@ -161,7 +169,7 @@ class Commando(object):
                 raise CommandExecutionFail(
                     self.language,
                     full_exception=exc,
-                    command=self.__manual_descriptor,
+                    command=MANUAL_DESCRIPTOR,
                     arg=self.__arg,
                     params=self.__params
                 )

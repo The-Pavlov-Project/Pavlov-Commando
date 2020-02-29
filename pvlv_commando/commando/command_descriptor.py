@@ -14,6 +14,7 @@ class CommandDescriptor(BaseCommandReader):
         self.dm_enabled = True  # can be used also in dm
         self.enabled_by_default = False  # this command is active by default
         self.permissions = 0  # permissions to use the command
+        self.thread_safe = True
 
         self.cost = 0  # the cost in bits of the command. This is useful to reflect the computational cost
         self.hourly_max_uses = False  # cause of the computational cost, False disabled
@@ -35,6 +36,7 @@ class CommandDescriptor(BaseCommandReader):
         self.dm_enabled = file.get('dm_enabled', self.dm_enabled)
         self.enabled_by_default = file.get('enabled_by_default', self.enabled_by_default)
         self.permissions = file.get('permissions', self.permissions)
+        self.thread_safe = file.get('thread_safe', self.thread_safe)
 
         self.cost = file.get('cost', self.cost)
         self.hourly_max_uses = file.get('hourly_max_uses', self.hourly_max_uses)
@@ -81,4 +83,4 @@ class CommandDescriptor(BaseCommandReader):
         return result
 
     def description_by_language(self, language):
-        return self.__read_value_by_language(language, self.__description)
+        return self.__read_value_by_language(language, self._description)
